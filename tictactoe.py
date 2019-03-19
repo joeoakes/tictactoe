@@ -1,7 +1,11 @@
 #!/usr/bin/python3
-# Simple TicTacToe game in Python - EAO
-import random
-import sys
+# Shebang - points to the python interpreter
+# Allows it to run standalone
+# Single line Comments
+# import statement performs two operations
+# search for the module and binds it to local scope
+import random  #(right click)Go to the Declaration
+import sys  #notice it is ghosted so it not used
 
 board = [i for i in range(0, 9)]
 player, computer = '', ''
