@@ -1,23 +1,30 @@
 #!/usr/bin/python3
-# Shebang - points to the python interpreter
-# Allows it to run standalone
+# Shebang - points to the python open source interpreter
+# This allows it to run standalone
 # Single line Comments
 # import statement performs two operations
 # search for the module and binds it to local scope
 import random  #(right click)Go to the Declaration
 import sys  #notice it is ghosted so it not used
 
+# dynamically typed language every variable name is bound only to an object
+# Names are bound to objects at execution time by means of assignment statements
+# Range Statement - Two parameters start and stop values
+# Python Collections (Arrays) Square Brackets listv
+# "" '' str type
 board = [i for i in range(0, 9)]
 player, computer = '', ''
 
-# Corners, Center and Others, respectively
+# A tuple is a sequence of immutable Python objects, lists can change tuple cannot
+# Corners, Center and Others, respectively tuple type
 moves = ((1, 7, 3, 9), (5,), (2, 4, 6, 8))
-# Winner combinations
+# Winner combinations tuple type
 winners = ((0, 1, 2), (3, 4, 5), (6, 7, 8), (0, 3, 6), (1, 4, 7), (2, 5, 8), (0, 4, 8), (2, 4, 6))
-# Table
+# Table - range type
 tab = range(1, 10)
 
-
+# keyword def is a python function
+# Don't have to define the input argument types or output type
 def print_board():
     x = 1
     for i in board:
@@ -30,19 +37,16 @@ def print_board():
         x += 1
         print(char, end=end)
 
-
 def select_char():
     chars = ('X', 'O')
     if random.randint(0, 1) == 0:
         return chars[::-1]
     return chars
 
-
 def can_move(brd, player, move):
     if move in tab and brd[move - 1] == move - 1:
         return True
     return False
-
 
 def can_win(brd, player, move):
     places = []
@@ -61,7 +65,6 @@ def can_win(brd, player, move):
             break
     return win
 
-
 def make_move(brd, player, move, undo=False):
     if can_move(brd, player, move):
         brd[move - 1] = player
@@ -70,7 +73,6 @@ def make_move(brd, player, move, undo=False):
             brd[move - 1] = move - 1
         return (True, win)
     return (False, False)
-
 
 # AI goes here
 def computer_move():
@@ -94,7 +96,6 @@ def computer_move():
                     move = mv
                     break
     return make_move(board, computer, move)
-
 
 def space_exist():
     return board.count('X') + board.count('O') != 9
